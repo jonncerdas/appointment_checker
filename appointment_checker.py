@@ -36,13 +36,14 @@ class AppointmentChecker:
         for sucursal_id in self.sucursal_ids:
             self.payload['sucursalId'] = str(sucursal_id)
             response = requests.post(self.url, headers=self.headers, data=self.payload)
-            if response.status_code == 200:
-                dates_list = response.json()
-                for date_str in dates_list:
-                    date = datetime.strptime(date_str, '%m/%d/%Y')
-                    if date.month <= self.month:
-                        yield f'{self.sucursals[sucursal_id]} ({date})'
-                        break
+            if response.status_code != 200:
+                break
+            dates_list = response.json()
+            for date_str in dates_list:
+                date = datetime.strptime(date_str, '%m/%d/%Y')
+                if date.month <= self.month:
+                    yield f'{self.sucursals[sucursal_id]} ({date})'
+                    break
 
 
 if __name__ == '__main__':
