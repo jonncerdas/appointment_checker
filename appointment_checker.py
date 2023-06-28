@@ -52,7 +52,7 @@ if __name__ == '__main__':
     heredia = {44: 'Centro Negocios Barreal', 17: 'Heredia Centro', 33: 'Heredia Cubujuqui', 170: 'Mall Oxigeno', 205: 'Paseo de las flores', 190: 'Puerto Viejo Sarapiquí', 59: 'San Antonio Belen', 127: 'Santo Domingo de Heredia'}
 
     sucursals = {**san_jose, **cartago, **heredia}
-    month = 10  # June
+    month = 10  # October
 
     appt_checker = AppointmentChecker(sucursals, month)
 
